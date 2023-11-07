@@ -1,0 +1,9 @@
+﻿
+<textarea readonly>
+    @ViewBag.Received
+</textarea>
+
+<form asp-action="TestReceiver" asp-controller="Home">
+    <label for="SendData">Input data to be sent to the Tcp/Ip listener</label>
+    <input class="form-control" name="SendData" />
+</form>

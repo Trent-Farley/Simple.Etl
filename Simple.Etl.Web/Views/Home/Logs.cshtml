@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Log>
+@section Styles {
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap.min.css" />
+
+}
+
+<table id="logs" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Message</th>
+            <th>Date</th>
+            <th>LogLevel</th>
+        </tr>
+    </thead>
+    @foreach(var log in Model)
+    {
+        var color = "";
+        switch (log.Level)
+        {
+            case "Error":
+                color = "red";
+                break;
+            case "Warning":
+                color = "yellow";
+                break;
+        }
+
+        <tr>
+            <td>@log.Message</td>
+            <td>@log.LogDate</td>
+            <td style="color: @color">@log.Level</td>
+
+        </tr>
+    }
+</table>
+
+
+@section Scripts{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("#logs").Datatable();    
+    </script>
+}
